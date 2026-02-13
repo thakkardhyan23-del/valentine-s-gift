@@ -1,19 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pages = document.querySelectorAll(".page");
-  const nextBtn = document.getElementById("next");
-  const prevBtn = document.getElementById("prev");
-  const progressFill = document.getElementById("progress-fill");
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+  const fill = document.querySelector(".fill");
 
-  let currentPage = 0;
-  const totalPages = pages.length;
+  let index = 0;
+  const total = pages.length;
 
-  // Safety check (intellectual honesty)
-  if (totalPages === 0) {
-    console.error("No pages found. Did you forget the .page class?");
-    return;
-  }
-
-  // Flower logic
   const messages = [
     "I love you",
     "madameji how is the website as of now?",
@@ -24,44 +17,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const flowers = ["🌸", "🌷", "🤍"];
 
-  document.querySelectorAll("[data-flower]").forEach(flower => {
-    flower.textContent =
-      flowers[Math.floor(Math.random() * flowers.length)];
-
-    flower.setAttribute(
-      "data-message",
-      messages[Math.floor(Math.random() * messages.length)]
-    );
+  pages.forEach(page => {
+    const flower = page.querySelector(".flower");
+    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+    flower.dataset.msg =
+      messages[Math.floor(Math.random() * messages.length)];
   });
 
-  function updatePage() {
-    pages.forEach((page, i) => {
-      page.classList.toggle("active", i === currentPage);
-    });
+  function render() {
+    pages.forEach((p, i) =>
+      p.classList.toggle("active", i === index)
+    );
 
-    progressFill.style.width =
-      ((currentPage + 1) / totalPages) * 100 + "%";
+    fill.style.width = ((index + 1) / total) * 100 + "%";
 
-    prevBtn.style.visibility =
-      currentPage === 0 ? "hidden" : "visible";
-
-    nextBtn.textContent =
-      currentPage === totalPages - 1 ? "Finish" : "Next";
+    prev.style.visibility = index === 0 ? "hidden" : "visible";
+    next.textContent = index === total - 1 ? "Finish" : "Next";
   }
 
-  nextBtn.addEventListener("click", () => {
-    if (currentPage < totalPages - 1) {
-      currentPage++;
-      updatePage();
+  next.onclick = () => {
+    if (index < total - 1) {
+      index++;
+      render();
     }
-  });
+  };
 
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 0) {
-      currentPage--;
-      updatePage();
+  prev.onclick = () => {
+    if (index > 0) {
+      index--;
+      render();
     }
-  });
+  };
 
-  updatePage();
+  render();
 });
