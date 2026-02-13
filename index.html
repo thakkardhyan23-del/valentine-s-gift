@@ -7,32 +7,40 @@
 </head>
 <body>
 
-  <!-- Pages -->
-  <div id="container">
-    <!-- Repeat section 11 times -->
-    <section class="page">
-      <h1>Hey you.</h1>
-      <p>[I’ll let you edit this part later 💙]</p>
-      <div class="flower" data-flower></div>
-    </section>
+  <div id="page-container">
 
-    <!-- Clone this section 10 more times -->
-    <!-- You can customize text later -->
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
-    <section class="page"><div class="flower" data-flower></div></section>
+    <!-- PAGE TEMPLATE -->
+    <div class="page active">
+      <div class="content">
+        <h1>Hey you.</h1>
+        <p>[You’ll write this later]</p>
+      </div>
+      <div class="flower" data-flower></div>
+    </div>
+
+    <!-- Duplicate this div until you have 11 pages -->
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+    <div class="page"><div class="flower" data-flower></div></div>
+
   </div>
 
-  <!-- Progress Bar -->
+  <!-- Navigation -->
+  <div id="nav-buttons">
+    <button id="prev">Back</button>
+    <button id="next">Next</button>
+  </div>
+
+  <!-- Progress -->
   <div id="progress-wrapper">
-    <span id="progress-text">How much of my love you've seen</span>
+    <span>How much of my love you've seen</span>
     <div id="progress-bar">
       <div id="progress-fill"></div>
     </div>
